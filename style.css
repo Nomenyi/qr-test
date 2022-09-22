@@ -35,9 +35,9 @@ div {
         stroke-dasharray: none !important;
     }
 
-    /* #flash-toggle {
+    #flash-toggle {
         display: none;
-    } */
+    }
 
     hr {
         margin-top: 32px;

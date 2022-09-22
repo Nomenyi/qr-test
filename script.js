@@ -1,5 +1,6 @@
 // import QrScanner from "./node_modules/qr-scanner/qr-scanner.min.js";
 
+
 // const camQrResult = document.getElementById('cam-qr-result');
 const flashToggle = document.getElementById('flash-toggle');
 const flashState = document.getElementById('flash-state');
@@ -11,6 +12,7 @@ const camQrResult = document.getElementById('identifiant');
 function getResult(label, result) {
     let qrData = result.data; // Use it as you need
     label.value = qrData;
+    $('#exampleModal').modal('hide')
     scanner.stop();
     scanner.destroy();
 }
@@ -27,7 +29,7 @@ const scanner = new QrScanner(video, result => getResult(camQrResult, result), {
 const updateFlashAvailability = () => {
     scanner.hasFlash().then(hasFlash => {
         // camHasFlash.textContent = hasFlash;
-        flashToggle.style.display = hasFlash ? 'block' : 'none';
+        flashToggle.style.display = hasFlash ? 'inline-block !important' : 'none';
     });
 };
 
