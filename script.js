@@ -47,17 +47,17 @@ document.getElementById('start-button').addEventListener('click', () => {
 
 window.scanner = scanner;
 
-// document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
-//     videoContainer.className = e.target.value;
-//     scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
-// });
+document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
+    videoContainer.className = e.target.value;
+    scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
+});
 
-// document.getElementById('show-scan-region').addEventListener('change', (e) => {
-//     const input = e.target;
-//     const label = input.parentNode;
-//     label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
-//     scanner.$canvas.style.display = input.checked ? 'block' : 'none';
-// });
+document.getElementById('show-scan-region').addEventListener('change', (e) => {
+    const input = e.target;
+    const label = input.parentNode;
+    label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
+    scanner.$canvas.style.display = input.checked ? 'block' : 'none';
+});
 
 flashToggle.addEventListener('click', () => {
     scanner.toggleFlash().then(() => flashState.textContent = scanner.isFlashOn() ? 'on' : 'off');
