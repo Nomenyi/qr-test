@@ -41,3 +41,8 @@ flashToggle.addEventListener('click', () => {
 $('#stop-button').on('click', () => {
     scanner.stop();
 });
+
+$('#submit').on('click', (e) => {
+    e.preventDefault();
+    alert('I have finished mine! 😎')
+});
