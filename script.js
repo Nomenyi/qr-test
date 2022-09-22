@@ -8,12 +8,12 @@ const scanRegion = document.getElementById('show-scan-region');
 const highlightScanRegion = document.getElementById('scan-region-highlight-style-select');
 const camQrResult = document.getElementById('cam-qr-result');
 
-function setResult(label, result) {
-    label.textContent = result.data;
-    // alert(result.data)
+function getResult(result) {
+    let qrData = result.data; // Use it as you need
+    alert(qrData);
 }
 
-const scanner = new QrScanner(video, result => setResult(camQrResult, result), {
+const scanner = new QrScanner(video, result => getResult(result), {
     onDecodeError: error => {
         // camQrResult.textContent = error;
         // camQrResult.style.color = 'inherit';
