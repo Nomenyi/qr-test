@@ -6,14 +6,16 @@ const flashState = document.getElementById('flash-state');
 const video = document.getElementById('qr-video');
 const scanRegion = document.getElementById('show-scan-region');
 const highlightScanRegion = document.getElementById('scan-region-highlight-style-select');
-const camQrResult = document.getElementById('cam-qr-result');
+const camQrResult = document.getElementById('identifiant');
 
-function getResult(result) {
+function getResult(label, result) {
     let qrData = result.data; // Use it as you need
-    alert(qrData);
+    label.value = qrData;
+    scanner.stop();
+    scanner.destroy();
 }
 
-const scanner = new QrScanner(video, result => getResult(result), {
+const scanner = new QrScanner(video, result => getResult(camQrResult, result), {
     onDecodeError: error => {
         // camQrResult.textContent = error;
         // camQrResult.style.color = 'inherit';
