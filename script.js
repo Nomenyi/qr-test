@@ -6,12 +6,14 @@ const flashState = document.getElementById('flash-state');
 const video = document.getElementById('qr-video');
 const scanRegion = document.getElementById('show-scan-region');
 const highlightScanRegion = document.getElementById('scan-region-highlight-style-select');
+const camQrResult = document.getElementById('cam-qr-result');
 
-function setResult(result) {
-    alert(result.data)
+function setResult(label, result) {
+    label.textContent = result.data;
+    // alert(result.data)
 }
 
-const scanner = new QrScanner(video, result => setResult(result), {
+const scanner = new QrScanner(video, result => setResult(camQrResult, result), {
     onDecodeError: error => {
         // camQrResult.textContent = error;
         // camQrResult.style.color = 'inherit';
@@ -21,9 +23,9 @@ const scanner = new QrScanner(video, result => setResult(result), {
 });
 
 const updateFlashAvailability = () => {
-    scanner.hasFlash().then(flashToggle => {
+    scanner.hasFlash().then(hasFlash => {
         // camHasFlash.textContent = hasFlash;
-        flashToggle.style.display = flashToggle ? 'inline-block' : 'none';
+        flashToggle.style.display = hasFlash ? 'inline-block' : 'none';
     });
 };
 
