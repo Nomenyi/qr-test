@@ -5,15 +5,11 @@ const camQrResult = document.getElementById('identifiant');
 
 function getResult(label, result) {
     let qrData = result.data; // Use it as you need
-
     label.value = qrData; // here we fill form input with this data
-    
     // Don't forget do stop scanner if operations are finished
     scanner.stop();
-
     $('#scannerModal').modal('hide') // hide modal after getting data
 }
-
 
 const scanner = new QrScanner(video, result => getResult(camQrResult, result), {
     highlightScanRegion: true,
@@ -33,6 +29,8 @@ $('#start-button').on('click',  () => {
         })
     );
 })
+
+window.scanner = scanner;
 
 flashToggle.addEventListener('click', () => {
     scanner.toggleFlash().then(() => flashState.textContent = scanner.isFlashOn() ? 'on' : 'off');
