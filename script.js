@@ -25,21 +25,9 @@ const scanner = new QrScanner(video, result => setResult(camQrResult, result), {
 const updateFlashAvailability = () => {
     scanner.hasFlash().then(hasFlash => {
         // camHasFlash.textContent = hasFlash;
-        flashToggle.style.display = hasFlash ? 'inline-block' : 'none';
+        flashToggle.style.display = hasFlash ? 'block' : 'none';
     });
 };
-
-// scanner.start().then(() => {
-//     updateFlashAvailability();
-// })
-
-// document.getElementById('start-button').addEventListener('click', () => {
-//     QrScanner.hasCamera().then(
-//         scanner.start().then(() => {
-//             updateFlashAvailability();
-//         })
-//     );
-// });
 
 $('#start-button').on('click',  () => {
     QrScanner.hasCamera().then(
@@ -48,8 +36,6 @@ $('#start-button').on('click',  () => {
         })
     );
 })
-
-// window.scanner = scanner;
 
 highlightScanRegion.addEventListener('change', (e) => {
     videoContainer.className = e.target.value;
@@ -69,4 +55,6 @@ flashToggle.addEventListener('click', () => {
 
 $('#stop-button').on('click', () => {
     scanner.stop();
+    scanner.destroy();
+    scanner = null;
 });
