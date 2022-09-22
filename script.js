@@ -8,7 +8,7 @@ const scanRegion = document.getElementById('show-scan-region');
 const highlightScanRegion = document.getElementById('scan-region-highlight-style-select');
 
 function setResult(result) {
-    alert(result)
+    alert(result.data)
 }
 
 const scanner = new QrScanner(video, result => setResult(result), {
