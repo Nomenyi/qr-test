@@ -22,8 +22,9 @@
 
             <form>
                 <div class="input-group mb-3">
+                    <label for="identifiant" class="form-label">Identifiant</label>
                     <input type="text" class="form-control" placeholder="1234567/7654321/0" aria-label="Example text with button addon" id="identifiant" aria-describedby="button-addon1">
-                    <button class="btn btn-outline-secondary" type="button" id="start-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button class="btn btn-outline-secondary" type="button" id="start-button" data-bs-toggle="modal" data-bs-target="#scannerModal">
                         <i class="fa-solid fa-qrcode"></i>
                     </button>
                 </div>
@@ -34,11 +35,11 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="scannerModal" aria-labelledby="scannerModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">QR Scanner</h5>
+                        <h5 class="modal-title" id="scannerModalLabel">QR Scanner</h5>
                         <button type="button" class="btn-close" id="stop-button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 

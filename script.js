@@ -11,23 +11,24 @@ const camQrResult = document.getElementById('identifiant');
 
 function getResult(label, result) {
     let qrData = result.data; // Use it as you need
-    label.value = qrData;
-    $('#exampleModal').modal('hide')
+
+    label.value = qrData; // here we fill form input with this data
+
+    $('#scannerModal').modal('hide') // hide modal after getting data
+
+    // Don't forget do stop and destroy scanner if operations are finished
     scanner.stop();
     scanner.destroy();
+    scanner = null;
 }
 
 const scanner = new QrScanner(video, result => getResult(camQrResult, result), {
-    onDecodeError: error => {
-        // camQrResult.textContent = error;
-        // camQrResult.style.color = 'inherit';
-    },
     highlightScanRegion: true,
     highlightCodeOutline: true,
 });
 
 const updateFlashAvailability = () => {
-    scanner.hasFlash().then(hasFlash => {
+    QrScanner.hasFlash().then(hasFlash => {
         // camHasFlash.textContent = hasFlash;
         flashToggle.style.display = hasFlash ? 'inline-block !important' : 'none';
     });
