@@ -4,6 +4,8 @@
 const flashToggle = document.getElementById('flash-toggle');
 const flashState = document.getElementById('flash-state');
 const video = document.getElementById('qr-video');
+const scanRegion = document.getElementById('show-scan-region');
+const highlightScanRegion = document.getElementById('scan-region-highlight-style-select');
 
 function setResult(result) {
     alert(result)
@@ -29,30 +31,30 @@ const updateFlashAvailability = () => {
 //     updateFlashAvailability();
 // })
 
-document.getElementById('start-button').addEventListener('click', () => {
-    QrScanner.hasCamera().then(
-        scanner.start().then(() => {
-            updateFlashAvailability();
-        })
-    );
-});
-
-// $('#start-button').on('click',  () => {
+// document.getElementById('start-button').addEventListener('click', () => {
 //     QrScanner.hasCamera().then(
 //         scanner.start().then(() => {
 //             updateFlashAvailability();
 //         })
 //     );
-// })
+// });
 
-window.scanner = scanner;
+$('#start-button').on('click',  () => {
+    QrScanner.hasCamera().then(
+        scanner.start().then(() => {
+            updateFlashAvailability();
+        })
+    );
+})
 
-document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
+// window.scanner = scanner;
+
+highlightScanRegion.addEventListener('change', (e) => {
     videoContainer.className = e.target.value;
     scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
 });
 
-document.getElementById('show-scan-region').addEventListener('change', (e) => {
+scanRegion.addEventListener('change', (e) => {
     const input = e.target;
     const label = input.parentNode;
     label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
