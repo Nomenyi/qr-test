@@ -1,7 +1,3 @@
-// import QrScanner from "./node_modules/qr-scanner/qr-scanner.min.js";
-
-
-// const camQrResult = document.getElementById('cam-qr-result');
 const flashToggle = document.getElementById('flash-toggle');
 const flashState = document.getElementById('flash-state');
 const video = document.getElementById('qr-video');
