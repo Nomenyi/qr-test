@@ -27,7 +27,6 @@ const scanner = new QrScanner(video, result => getResult(camQrResult, result), {
 
 const checkFlash = () => {
     scanner.hasFlash().then(hasFlash => {
-        alert('flash')
         flashToggle.style.display = hasFlash ? 'block !important' : 'none';
     });
 };
